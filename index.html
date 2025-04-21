@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DecoraMate - Celebrate Beautifully, Stress-Free</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #fef8f5;
+        color: #333;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      /* Navigation Bar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      .logo {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: #ff6f61;
+      }
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+      .nav-links li {
+        margin-left: 2rem;
+      }
+      .nav-links li a {
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      .nav-links li a:hover {
+        color: #ff6f61;
+      }
+      .hamburger {
+        display: none;
+        cursor: pointer;
+      }
+      .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin: 5px;
+        transition: all 0.3s ease;
+      }
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://images.unsplash.com/photo-1531956531700-dc0ee0f1f9a5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8")
+            center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        padding: 0 1rem;
+        margin-top: 60px;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 700px;
+      }
+      .btn-container {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .btn {
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .btn-primary {
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+      }
+      .btn-secondary {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+      .btn-primary:hover {
+        background-color: #e56055;
+      }
+      .btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      /* Section Styling */
+      section {
+        padding: 5rem 10%;
+      }
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+      .section-title h2 {
+        font-size: 2rem;
+        color: #333;
+      }
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: #ff6f61;
+        margin: 0.5rem auto;
+      }
+      /* Occasions Section */
+      .occasions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+      .occasion-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+      }
+      .occasion-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+      }
+      .occasion-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+      }
+      .occasion-title {
+        padding: 1rem;
+        text-align: center;
+        font-weight: 500;
+      }
+      /* DIY Kit Section */
+      .diy-kit {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+      .diy-description {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .diy-form {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+      select,
+      input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-family: "Poppins", sans-serif;
+      }
+      .materials-container {
+        margin-top: 1rem;
+        display: none;
+      }
+      .material-checkbox {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+      .material-checkbox input {
+        width: auto;
+        margin-right: 0.5rem;
+      }
+      .kit-summary {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: #fef8f5;
+        border-radius: 5px;
+        display: none;
+      }
+      /* Hire Decorator Section */
+      .hire-form {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+      /* Auth Section */
+      .auth-container {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+      .auth-tabs {
+        display: flex;
+        margin-bottom: 2rem;
+      }
+      .auth-tab {
+        flex: 1;
+        text-align: center;
+        padding: 0.8rem;
+        cursor: pointer;
+        border-bottom: 2px solid #ddd;
+      }
+      .auth-tab.active {
+        border-bottom-color: #ff6f61;
+        color: #ff6f61;
+        font-weight: 600;
+      }
+      .auth-form {
+        display: none;
+      }
+      .auth-form.active {
+        display: block;
+      }
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: white;
+        padding: 2rem 5%;
+        text-align: center;
+      }
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        margin-bottom: 1rem;
+      }
+      .footer-links li {
+        margin: 0 1rem;
+      }
+      .footer-links li a {
+        color: white;
+        transition: color 0.3s;
+      }
+      .footer-links li a:hover {
+        color: #ff6f61;
+      }
+      .copyright {
+        font-size: 0.9rem;
+        color: #ddd;
+      }
+      /* Dark Mode Styles */
+      body.dark-mode {
+        background-color: #1a1a1a;
+        color: #f5f5f5;
+      }
+      body.dark-mode nav {
+        background-color: #2a2a2a;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+      body.dark-mode .nav-links li a {
+        color: #f5f5f5;
+      }
+      body.dark-mode .hamburger div {
+        background-color: #f5f5f5;
+      }
+      body.dark-mode .occasion-card,
+      body.dark-mode .diy-kit,
+      body.dark-mode .hire-form,
+      body.dark-mode .auth-container {
+        background-color: #2a2a2a;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+      body.dark-mode .kit-summary,
+      body.dark-mode input,
+      body.dark-mode select {
+        background-color: #333;
+        color: #f5f5f5;
+        border-color: #444;
+      }
+      body.dark-mode .auth-tab {
+        border-bottom-color: #444;
+      }
+      body.dark-mode .auth-tab.active {
+        border-bottom-color: #ff6f61;
+      }
+      body.dark-mode footer {
+        background-color: #222;
+      }
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: absolute;
+          right: 0;
+          top: 60px;
+          background-color: white;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          padding: 1rem 0;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+          transform: translateY(-150%);
+          transition: transform 0.3s ease-in;
+          z-index: 999;
+        }
+        .nav-links.active {
+          transform: translateY(0);
+        }
+        .nav-links li {
+          margin: 1rem 0;
+        }
+        .hamburger {
+          display: block;
+        }
+        .btn-container {
+          flex-direction: column;
+          width: 100%;
+          max-width: 300px;
+        }
+        .hero h1 {
+          font-size: 2rem;
+        }
+        section {
+          padding: 3rem 5%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="loading-spinner"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      "
+    >
+      <div
+        style="
+          width: 50px;
+          height: 50px;
+          border: 5px solid #f3f3f3;
+          border-top: 5px solid #ff6f61;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        "
+      ></div>
+    </div>
+    <style>
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="logo">DecoraMate</div>
+      <!-- Add this right before the closing </nav> tag -->
+      <button
+        id="dark-mode-toggle"
+        class="btn"
+        style="
+          margin-left: 1rem;
+          font-size: 1.2rem;
+          background: none;
+          border: none;
+        "
+      >
+        🌙
+      </button>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#occasions">Occasions</a></li>
+        <li><a href="#diy-kits">DIY Kits</a></li>
+        <li><a href="#hire-decorator">Hire Decorator</a></li>
+        <li><a href="#auth">Login</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <h1>Celebrate Beautifully, Stress-Free</h1>
+      <p>
+        Your one-stop platform for home and venue decorations for every
+        occasion.
+      </p>
+      <div class="btn-container">
+        <a href="#diy-kits" class="btn btn-primary">Explore DIY Kits</a>
+        <a href="#hire-decorator" class="btn btn-secondary">Hire a Decorator</a>
+      </div>
+    </section>
+    <!-- Occasions Section -->
+    <section id="occasions">
+      <div class="section-title">
+        <h2>Choose Your Occasion</h2>
+      </div>
+      <div class="occasions-grid">
+        <div class="occasion-card" data-occasion="birthday">
+          <div
+            class="occasion-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1558636508-e0db3814bd1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80');
+            "
+          ></div>
+          <div class="occasion-title">Birthday</div>
+        </div>
+        <div class="occasion-card" data-occasion="anniversary">
+          <div
+            class="occasion-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1707831853477-545a84511e57?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            "
+          ></div>
+          <div class="occasion-title">Anniversary</div>
+        </div>
+        <div class="occasion-card" data-occasion="Date">
+          <div
+            class="occasion-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1529516222410-a269d812f320?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8RGF0ZXxlbnwwfHwwfHx8MA%3D%3D');
+            "
+          ></div>
+          <div class="occasion-title">Date</div>
+        </div>
+        <div class="occasion-card" data-occasion="baby-shower">
+          <div
+            class="occasion-image"
+            style="
+              background-image: url('https://plus.unsplash.com/premium_photo-1711638374362-a26eb6bbb281?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmFieSUyMHNob3dlcnxlbnwwfHwwfHx8MA%3D%3D');
+            "
+          ></div>
+          <div class="occasion-title">Baby Shower</div>
+        </div>
+      </div>
+    </section>
+    <!-- DIY Kit Section -->
+    <section id="diy-kits">
+      <div class="section-title">
+        <h2>Build Your DIY Decoration Kit</h2>
+      </div>
+      <div class="diy-kit">
+        <div class="diy-description">
+          <p>
+            Pick your occasion and select items like balloons, lights,
+            backdrops, and props. Get everything delivered in one neat kit!
+          </p>
+        </div>
+        <div class="diy-form">
+          <div class="form-group">
+            <label for="occasion">Select Occasion:</label>
+            <select id="occasion">
+              <option value="">-- Select --</option>
+              <option value="birthday">Birthday</option>
+              <option value="anniversary">Anniversary</option>
+              <option value="Date">Date</option>
+              <option value="baby-shower">Baby Shower</option>
+            </select>
+          </div>
+          <div id="materials-container" class="materials-container">
+            <label>Select Materials:</label>
+            <div class="material-checkbox">
+              <input
+                type="checkbox"
+                id="balloons"
+                name="material"
+                value="Balloons"
+              />
+              <label for="balloons">Balloons</label>
+            </div>
+            <div class="material-checkbox">
+              <input
+                type="checkbox"
+                id="fairy-lights"
+                name="material"
+                value="Fairy Lights"
+              />
+              <label for="fairy-lights">Fairy Lights</label>
+            </div>
+            <div class="material-checkbox">
+              <input
+                type="checkbox"
+                id="ribbons"
+                name="material"
+                value="Ribbons"
+              />
+              <label for="ribbons">Ribbons</label>
+            </div>
+            <div class="material-checkbox">
+              <input
+                type="checkbox"
+                id="banners"
+                name="material"
+                value="Banners"
+              />
+              <label for="banners">Banners</label>
+            </div>
+            <div class="material-checkbox">
+              <input
+                type="checkbox"
+                id="candles"
+                name="material"
+                value="Candles"
+              />
+              <label for="candles">Candles</label>
+            </div>
+            <div class="material-checkbox">
+              <input type="checkbox" id="props" name="material" value="Props" />
+              <label for="props">Props</label>
+            </div>
+          </div>
+          <div id="kit-summary" class="kit-summary">
+            <h3>Your DIY Kit Summary:</h3>
+            <p id="selected-occasion">Occasion: <span></span></p>
+            <p>Materials:</p>
+            <ul id="selected-materials"></ul>
+            <button
+              id="place-order-btn"
+              class="btn btn-primary"
+              style="margin-top: 1rem; display: none"
+            >
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Hire Decorator Section -->
+    <section id="hire-decorator">
+      <div class="section-title">
+        <h2>Hire a Local Decorator</h2>
+      </div>
+      <div class="hire-form">
+        <div class="form-group">
+          <label for="city">City:</label>
+          <input type="text" id="city" placeholder="Enter your city" />
+        </div>
+        <div class="form-group">
+          <label for="pincode">Pincode:</label>
+          <input type="text" id="pincode" placeholder="Enter your pincode" />
+        </div>
+        <button id="hire-submit" class="btn btn-primary">
+          Find Decorators
+        </button>
+      </div>
+    </section>
+    <!-- Auth Section -->
+    <section id="auth">
+      <div class="section-title">
+        <h2>Account</h2>
+      </div>
+      <div class="auth-container">
+        <div class="auth-tabs">
+          <div class="auth-tab active" data-tab="login">Login</div>
+          <div class="auth-tab" data-tab="signup">Signup</div>
+        </div>
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form active">
+          <div class="form-group">
+            <label for="login-email">Email:</label>
+            <input
+              type="email"
+              id="login-email"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password:</label>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="Enter your password"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <!-- Signup Form -->
+        <form id="signup-form" class="auth-form">
+          <div class="form-group">
+            <label for="signup-name">Name:</label>
+            <input type="text" id="signup-name" placeholder="Enter your name" />
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email:</label>
+            <input
+              type="email"
+              id="signup-email"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password:</label>
+            <input
+              type="password"
+              id="signup-password"
+              placeholder="Create a password"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Create Account</button>
+        </form>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+      <p class="copyright">© 2025 DecoraMate. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Hide loading spinner when page is loaded
+      window.addEventListener("load", function () {
+        const spinner = document.getElementById("loading-spinner");
+        spinner.style.display = "none";
+      });
+      const API_BASE_URL = "http://localhost:3000/api";
+      let currentUser = null;
+      async function checkLoginStatusFromAPI() {
+        const storedUser = localStorage.getItem("decoraMateUser");
+        if (storedUser) {
+          currentUser = JSON.parse(storedUser);
+          showLoggedInView(currentUser);
+        }
+      }
+      // Mobile Navigation
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Smooth Scrolling for all navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 60,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Occasion Cards Navigation
+      document.querySelectorAll(".occasion-card").forEach((card) => {
+        card.addEventListener("click", function () {
+          const occasion = this.getAttribute("data-occasion");
+
+          // Scroll to DIY section
+          document.querySelector("#diy-kits").scrollIntoView({
+            behavior: "smooth",
+          });
+
+          // Set the dropdown value
+          setTimeout(() => {
+            document.querySelector("#occasion").value = occasion;
+
+            // Trigger the change event
+            const event = new Event("change");
+            document.querySelector("#occasion").dispatchEvent(event);
+          }, 1000);
+        });
+      });
+
+      // DIY Kit Section Functionality
+      const occasionSelect = document.querySelector("#occasion");
+      const materialsContainer = document.querySelector("#materials-container");
+      const kitSummary = document.querySelector("#kit-summary");
+
+      occasionSelect.addEventListener("change", function () {
+        if (this.value) {
+          materialsContainer.style.display = "block";
+        } else {
+          materialsContainer.style.display = "none";
+          kitSummary.style.display = "none";
+        }
+
+        updateKitSummary();
+      });
+
+      // Update kit summary when materials are selected
+      document
+        .querySelectorAll('input[name="material"]')
+        .forEach((checkbox) => {
+          checkbox.addEventListener("change", updateKitSummary);
+        });
+
+      function updateKitSummary() {
+        const selectedOccasion = document.querySelector("#occasion").value;
+
+        if (!selectedOccasion) {
+          kitSummary.style.display = "none";
+          return;
+        }
+
+        // Get selected materials
+        const selectedMaterials = Array.from(
+          document.querySelectorAll('input[name="material"]:checked')
+        ).map((checkbox) => checkbox.value);
+
+        // Update the summary
+        document.querySelector("#selected-occasion span").textContent =
+          selectedOccasion.charAt(0).toUpperCase() +
+          selectedOccasion.slice(1).replace("-", " ");
+
+        const materialsList = document.querySelector("#selected-materials");
+        materialsList.innerHTML = "";
+
+        if (selectedMaterials.length > 0) {
+          selectedMaterials.forEach((material) => {
+            const li = document.createElement("li");
+            li.textContent = material;
+            materialsList.appendChild(li);
+          });
+          kitSummary.style.display = "block";
+        } else {
+          kitSummary.style.display = "none";
+        }
+      }
+      document
+        .querySelector("#hire-submit")
+        .addEventListener("click", async function () {
+          const city = document.querySelector("#city").value;
+          const pincode = document.querySelector("#pincode").value;
+
+          if (!city && !pincode) {
+            alert("Please enter city or pincode");
+            return;
+          }
+
+          if (!currentUser) {
+            alert("Please login to hire a decorator");
+            document
+              .querySelector("#auth")
+              .scrollIntoView({ behavior: "smooth" });
+            return;
+          }
+
+          try {
+            const response = await fetch(
+              `${API_BASE_URL}/decorators?city=${city}&pincode=${pincode}`
+            );
+            const decorators = await response.json();
+
+            if (!response.ok) {
+              throw new Error("Failed to find decorators");
+            }
+
+            if (decorators.length === 0) {
+              alert("No decorators found in your area");
+              return;
+            }
+
+            // Display decorators (simple implementation)
+            let decoratorsList = "Available Decorators:\n\n";
+            decorators.forEach((decorator, index) => {
+              decoratorsList += `${index + 1}. ${decorator.name} - Rating: ${
+                decorator.rating
+              }/5 - Experience: ${decorator.experience} years\n`;
+            });
+
+            alert(decoratorsList);
+
+            // In a real app, you would display these in a nice UI instead of an alert
+            const selectedIndex = prompt(
+              "Enter the number of the decorator you want to hire (or cancel):"
+            );
+
+            if (
+              selectedIndex &&
+              !isNaN(selectedIndex) &&
+              selectedIndex > 0 &&
+              selectedIndex <= decorators.length
+            ) {
+              const selectedDecorator = decorators[selectedIndex - 1];
+
+              const occasion = prompt("Enter the occasion:");
+              const date = prompt("Enter the date (YYYY-MM-DD):");
+              const address = prompt("Enter your address:");
+
+              if (occasion && date && address) {
+                // Book the decorator
+                const bookResponse = await fetch(
+                  `${API_BASE_URL}/decorators/book`,
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      userId: currentUser.id,
+                      decoratorId: selectedDecorator.id,
+                      occasion,
+                      date,
+                      address,
+                    }),
+                  }
+                );
+
+                const bookData = await bookResponse.json();
+
+                if (!bookResponse.ok) {
+                  throw new Error(
+                    bookData.message || "Failed to book decorator"
+                  );
+                }
+
+                alert("Decorator booked successfully!");
+              }
+            }
+          } catch (error) {
+            alert(
+              error.message ||
+                "Failed to process your request. Please try again."
+            );
+          }
+        });
+      // Auth Tabs
+      const authTabs = document.querySelectorAll(".auth-tab");
+      const authForms = document.querySelectorAll(".auth-form");
+
+      authTabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          const tabName = this.getAttribute("data-tab");
+
+          // Toggle active tab
+          authTabs.forEach((t) => t.classList.remove("active"));
+          this.classList.add("active");
+
+          // Toggle active form
+          authForms.forEach((form) => form.classList.remove("active"));
+          document.querySelector(`#${tabName}-form`).classList.add("active");
+        });
+      });
+
+      // Place Order Button
+      const placeOrderBtn = document.querySelector("#place-order-btn");
+
+      // Modify your updateKitSummary function to also show the order button
+      function updateKitSummary() {
+        const selectedOccasion = document.querySelector("#occasion").value;
+
+        if (!selectedOccasion) {
+          kitSummary.style.display = "none";
+          placeOrderBtn.style.display = "none";
+          return;
+        }
+
+        // Get selected materials
+        const selectedMaterials = Array.from(
+          document.querySelectorAll('input[name="material"]:checked')
+        ).map((checkbox) => checkbox.value);
+
+        // Update the summary
+        document.querySelector("#selected-occasion span").textContent =
+          selectedOccasion.charAt(0).toUpperCase() +
+          selectedOccasion.slice(1).replace("-", " ");
+
+        const materialsList = document.querySelector("#selected-materials");
+        materialsList.innerHTML = "";
+
+        if (selectedMaterials.length > 0) {
+          selectedMaterials.forEach((material) => {
+            const li = document.createElement("li");
+            li.textContent = material;
+            materialsList.appendChild(li);
+          });
+          kitSummary.style.display = "block";
+          placeOrderBtn.style.display = "block"; // Show the order button
+        } else {
+          kitSummary.style.display = "none";
+          placeOrderBtn.style.display = "none"; // Hide the order button
+        }
+      }
+
+      // Add click event listener for the place order button
+      // Modified place order button event listener with enhanced status handling
+      placeOrderBtn.addEventListener("click", async function () {
+        if (!currentUser) {
+          alert("Please login to place an order");
+          document
+            .querySelector("#auth")
+            .scrollIntoView({ behavior: "smooth" });
+          return;
+        }
+
+        const selectedOccasion = document.querySelector("#occasion").value;
+        const selectedMaterials = Array.from(
+          document.querySelectorAll('input[name="material"]:checked')
+        ).map((checkbox) => checkbox.value);
+
+        // Simple address prompt (in a real app, you'd have a proper form)
+        const deliveryAddress = prompt("Please enter delivery address:");
+
+        if (!deliveryAddress) {
+          alert("Address is required to place an order");
+          return;
+        }
+
+        try {
+          const response = await fetch(`${API_BASE_URL}/orders`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: currentUser.id,
+              occasion: selectedOccasion,
+              materials: selectedMaterials,
+              deliveryAddress,
+              type: "diy-kit", // Add type for clarity
+              status: "pending",
+            }),
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.message || "Failed to place order");
+          }
+
+          alert(
+            "Order placed successfully! Your DIY kit is now pending confirmation."
+          );
+
+          // Reset the form
+          document.querySelector("#occasion").value = "";
+          document
+            .querySelectorAll('input[name="material"]:checked')
+            .forEach((checkbox) => {
+              checkbox.checked = false;
+            });
+
+          // Hide the summary and button
+          kitSummary.style.display = "none";
+          placeOrderBtn.style.display = "none";
+          materialsContainer.style.display = "none";
+
+          // Refresh user profile to show new order
+          if (currentUser) {
+            showLoggedInView(currentUser);
+          }
+        } catch (error) {
+          alert(error.message || "Failed to place order. Please try again.");
+        }
+      });
+
+      // User Authentication with localStorage
+
+      const loginForm = document.querySelector("#login-form");
+      const signupForm = document.querySelector("#signup-form");
+      const authContainer = document.querySelector(".auth-container");
+      const authSection = document.querySelector("#auth .section-title");
+
+      // Check if user is already logged in
+      function checkLoginStatus() {
+        const loggedInUser = localStorage.getItem("decoraMateUser");
+
+        if (loggedInUser) {
+          // User is logged in, show logged-in view
+          showLoggedInView(JSON.parse(loggedInUser));
+        }
+      }
+
+      // Show logged-in user view
+      // Modified showLoggedInView function with enhanced order status display
+      async function showLoggedInView(user) {
+        // Fetch user's orders if logged in
+        let ordersHTML = "";
+
+        if (user && user.id) {
+          try {
+            const response = await fetch(
+              `${API_BASE_URL}/orders/user/${user.id}`
+            );
+            const orders = await response.json();
+
+            if (response.ok && orders.length > 0) {
+              ordersHTML = `
+                    <div class="user-orders">
+                        <h4>Your Orders</h4>
+                        <ul>
+                            ${orders
+                              .map((order) => {
+                                // Determine order type and details
+                                let orderDetails = "";
+                                if (order.type === "decorator-booking") {
+                                  orderDetails = `Decorator Booking for ${
+                                    order.occasion
+                                  } on ${new Date(
+                                    order.date
+                                  ).toLocaleDateString()}`;
+                                } else {
+                                  // DIY Kit order
+                                  orderDetails = `DIY Kit for ${order.occasion}`;
+                                  if (
+                                    order.materials &&
+                                    order.materials.length
+                                  ) {
+                                    orderDetails += ` - ${order.materials.join(
+                                      ", "
+                                    )}`;
+                                  }
+                                }
+
+                                // Get status badge with appropriate styling
+                                let statusBadge = `<span class="order-status ${
+                                  order.status || "pending"
+                                }">${order.status || "pending"}</span>`;
+
+                                // Add a view details button
+                                let viewDetailsBtn = `<button class="view-order-btn" data-order-id="${order.id}">View Details</button>`;
+
+                                return `
+                                    <li>
+                                        ${orderDetails}
+                                        ${statusBadge}
+                                        <div class="order-actions">
+                                            ${viewDetailsBtn}
+                                        </div>
+                                    </li>
+                                `;
+                              })
+                              .join("")}
+                        </ul>
+                    </div>
+                `;
+            }
+          } catch (error) {
+            console.error("Error fetching orders:", error);
+          }
+        }
+
+        authContainer.innerHTML = `
+        <div class="user-profile">
+            <h3>Welcome, ${user.name || user.email.split("@")[0]}!</h3>
+            <p>You are logged in as: ${user.email}</p>
+            ${ordersHTML}
+            <button id="logout-btn" class="btn btn-primary" style="margin-top: 1rem;">Logout</button>
+        </div>
+    `;
+
+        // Add logout functionality
+        document
+          .querySelector("#logout-btn")
+          .addEventListener("click", function () {
+            localStorage.removeItem("decoraMateUser");
+            currentUser = null;
+            location.reload(); // Reload page to show login form again
+          });
+
+        // Add event listeners for view order details buttons
+        document.querySelectorAll(".view-order-btn").forEach((btn) => {
+          btn.addEventListener("click", async function () {
+            const orderId = this.getAttribute("data-order-id");
+            try {
+              const response = await fetch(`${API_BASE_URL}/orders/${orderId}`);
+              const order = await response.json();
+
+              if (!response.ok) {
+                throw new Error("Failed to fetch order details");
+              }
+
+              // Create a modal or dialog to show order details
+              let orderType =
+                order.type === "decorator-booking"
+                  ? "Decorator Booking"
+                  : "DIY Kit";
+              let orderDate = new Date(order.createdAt).toLocaleString();
+              let orderStatus = order.status || "pending";
+
+              let orderDetailsHTML = `
+                    <div class="order-details-modal">
+                        <h3>Order Details</h3>
+                        <p><strong>Order ID:</strong> ${order.id}</p>
+                        <p><strong>Type:</strong> ${orderType}</p>
+                        <p><strong>Date:</strong> ${orderDate}</p>
+                        <p><strong>Status:</strong> <span class="order-status ${orderStatus}">${orderStatus}</span></p>
+                        <p><strong>Occasion:</strong> ${order.occasion}</p>
+                `;
+
+              if (order.type === "decorator-booking") {
+                orderDetailsHTML += `
+                        <p><strong>Booking Date:</strong> ${new Date(
+                          order.date
+                        ).toLocaleDateString()}</p>
+                        <p><strong>Address:</strong> ${order.address}</p>
+                    `;
+              } else {
+                // DIY Kit details
+                orderDetailsHTML += `
+                        <p><strong>Materials:</strong></p>
+                        <ul>
+                            ${order.materials
+                              .map((material) => `<li>${material}</li>`)
+                              .join("")}
+                        </ul>
+                        <p><strong>Delivery Address:</strong> ${
+                          order.deliveryAddress
+                        }</p>
+                    `;
+              }
+
+              orderDetailsHTML += `
+                        <div class="modal-actions">
+                            <button id="close-modal-btn" class="btn">Close</button>
+                        </div>
+                    </div>
+                `;
+
+              // Create modal overlay
+              const modalOverlay = document.createElement("div");
+              modalOverlay.className = "modal-overlay";
+              modalOverlay.innerHTML = orderDetailsHTML;
+              document.body.appendChild(modalOverlay);
+
+              // Add close functionality
+              document
+                .getElementById("close-modal-btn")
+                .addEventListener("click", function () {
+                  document.body.removeChild(modalOverlay);
+                });
+            } catch (error) {
+              alert("Failed to fetch order details. Please try again.");
+              console.error(error);
+            }
+          });
+        });
+      }
+
+      checkLoginStatusFromAPI();
+      // Add enhanced styles for orders and modals
+      const enhancedStyles = document.createElement("style");
+      enhancedStyles.textContent = `
+    .order-status {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    .pending {
+        background-color: #FFD700;
+        color: #333;
+    }
+    .processing {
+        background-color: #1E90FF;
+        color: white;
+    }
+    .shipped {
+        background-color: #9370DB;
+        color: white;
+    }
+    .delivered {
+        background-color: #32CD32;
+        color: white;
+    }
+    .completed {
+        background-color: #32CD32;
+        color: white;
+    }
+    .cancelled {
+        background-color: #FF6347;
+        color: white;
+    }
+    .user-orders {
+        margin-top: 20px;
+        background-color: #f8f8f8;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .user-orders ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .user-orders li {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .order-actions {
+        margin-top: 8px;
+    }
+    .view-order-btn {
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 4px 8px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    .view-order-btn:hover {
+        background-color: #e0e0e0;
+    }
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+    .order-details-modal {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 500px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    .modal-actions {
+        margin-top: 20px;
+        text-align: right;
+    }
+`;
+      document.head.appendChild(enhancedStyles);
+      const orderStatusStyles = document.createElement("style");
+      orderStatusStyles.textContent = `
+    .order-status {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    .pending {
+      background-color: #FFD700;
+      color: #333;
+    }
+    .processing {
+      background-color: #1E90FF;
+      color: white;
+    }
+    .completed {
+      background-color: #32CD32;
+      color: white;
+    }
+    .cancelled {
+      background-color: #FF6347;
+      color: white;
+    }
+    .user-orders {
+      margin-top: 20px;
+      background-color: #f8f8f8;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .user-orders ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .user-orders li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+  `;
+      document.head.appendChild(orderStatusStyles);
+
+      // Login Form
+      // Login Form;
+      loginForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const email = document.querySelector("#login-email").value;
+        const password = document.querySelector("#login-password").value;
+
+        try {
+          const response = await fetch(`${API_BASE_URL}/auth/login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.message || "Login failed");
+          }
+
+          // Save user to localStorage
+          localStorage.setItem("decoraMateUser", JSON.stringify(data));
+          currentUser = data;
+
+          alert("Login successful!");
+          showLoggedInView(data);
+        } catch (error) {
+          alert(error.message || "Login failed. Please try again.");
+        }
+      });
+
+      // Signup Form
+      signupForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const name = document.querySelector("#signup-name").value;
+        const email = document.querySelector("#signup-email").value;
+        const password = document.querySelector("#signup-password").value;
+
+        if (name && email && password) {
+          try {
+            const response = await fetch(`${API_BASE_URL}/auth/register`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ name, email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+              throw new Error(data.message || "Registration failed");
+            }
+
+            // Save user to localStorage
+            localStorage.setItem("decoraMateUser", JSON.stringify(data));
+            currentUser = data;
+
+            alert("Account created successfully!");
+            showLoggedInView(data);
+          } catch (error) {
+            alert(error.message || "Registration failed. Please try again.");
+          }
+        } else {
+          alert("Please fill all fields");
+        }
+      });
+      // Check login status on page load
+      checkLoginStatus();
+
+      // Dark Mode Toggle
+      const darkModeToggle = document.querySelector("#dark-mode-toggle");
+      const body = document.body;
+
+      // Check for saved dark mode preference
+      if (localStorage.getItem("darkMode") === "enabled") {
+        enableDarkMode();
+      }
+
+      // Toggle dark mode
+      darkModeToggle.addEventListener("click", () => {
+        if (body.classList.contains("dark-mode")) {
+          disableDarkMode();
+        } else {
+          enableDarkMode();
+        }
+      });
+
+      function enableDarkMode() {
+        body.classList.add("dark-mode");
+        localStorage.setItem("darkMode", "enabled");
+        darkModeToggle.innerHTML = "☀️";
+      }
+
+      function disableDarkMode() {
+        body.classList.remove("dark-mode");
+        localStorage.setItem("darkMode", "disabled");
+        darkModeToggle.innerHTML = "🌙";
+      }
+    </script>
+  </body>
+</html>
